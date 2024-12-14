@@ -1,9 +1,13 @@
-﻿namespace EasyTodoList.Domain.Primitives;
+﻿
+using System.Diagnostics.CodeAnalysis;
+
+namespace EasyTodoList.Domain.Primitives;
 
 internal class Identifier
 {
-    internal Guid Value { get; init; }
+    internal required Guid Value { get; init; }
 
+    [SetsRequiredMembers]
     private Identifier(Guid value) => Value = value;
 
     public static Identifier Construct() => new(Guid.CreateVersion7());

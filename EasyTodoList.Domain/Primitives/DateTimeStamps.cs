@@ -1,10 +1,15 @@
-﻿namespace EasyTodoList.Domain.Primitives;
+﻿
+
+using System.Diagnostics.CodeAnalysis;
+
+namespace EasyTodoList.Domain.Primitives;
 
 internal class DateTimeStamps
 {
-    internal DateTime CreateDate { get; init; }
-    internal DateTime? UpdateDate { get; init; }
+    internal required DateTime CreateDate { get; init; }
+    internal required DateTime? UpdateDate { get; init; }
 
+    [SetsRequiredMembers]
     private DateTimeStamps(DateTime createDate, DateTime? updateDate)
     {
         CreateDate = createDate;
