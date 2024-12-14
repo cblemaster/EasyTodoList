@@ -10,5 +10,5 @@ internal class Identifier
     [SetsRequiredMembers]
     private Identifier(Guid value) => Value = value;
 
-    public static Identifier Construct() => new(Guid.CreateVersion7());
+    internal static Identifier Construct() => new(Guid.CreateVersion7());
 }

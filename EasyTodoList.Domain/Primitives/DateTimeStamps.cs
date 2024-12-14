@@ -16,5 +16,5 @@ internal class DateTimeStamps
         UpdateDate = updateDate;
     }
 
-    public static DateTimeStamps Construct(DateTime createDate, DateTime? updateDate) => new(createDate, updateDate);
+    internal static DateTimeStamps Construct(DateTime createDate, DateTime? updateDate) => new(createDate, updateDate);
 }
