@@ -27,6 +27,8 @@ internal class Todo : Entity
         Id = Identifier.Construct();
     }
 
+    public TodoDetail GetTodoDetail => new() { Description = Description.Value, DueDate = DueDate, IsImportant = IsImportant, IsComplete = IsComplete, CreateDate = Dates.CreateDate, UpdateDate = Dates.UpdateDate, Id = Id.Value };
+    
     private static Todo NotValid() => new("Input provided for todo is not valid.", null, false, false, DateTime.Now, null);
 
     public static Todo Construct(CreateTodo dto) => ValidateCreateTodo(dto).IsValid
