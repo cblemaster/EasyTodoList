@@ -3,12 +3,11 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace EasyTodoList.Domain.Primitives;
 
-internal class Descriptor
+public class Descriptor
 {
-    internal required string Value { get; init; } = string.Empty;
+    public string Value { get; init; } = string.Empty;
 
-    [SetsRequiredMembers]
     private Descriptor(string value) => Value = value;
 
-    internal static Descriptor Construct(string value) => new(value);
+    public static Descriptor Construct(string value) => new(value);
 }

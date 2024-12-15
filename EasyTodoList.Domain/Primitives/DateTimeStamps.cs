@@ -3,12 +3,11 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace EasyTodoList.Domain.Primitives;
 
-internal class DateTimeStamps
+public class DateTimeStamps
 {
-    internal required DateTime CreateDate { get; init; }
-    internal required DateTime? UpdateDate { get; init; }
+    public DateTime CreateDate { get; init; }
+    public DateTime? UpdateDate { get; init; }
 
-    [SetsRequiredMembers]
     private DateTimeStamps(DateTime createDate, DateTime? updateDate)
     {
         CreateDate = createDate;

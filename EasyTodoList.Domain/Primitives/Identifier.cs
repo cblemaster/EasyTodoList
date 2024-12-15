@@ -3,12 +3,11 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace EasyTodoList.Domain.Primitives;
 
-internal class Identifier
+public class Identifier
 {
-    internal required Guid Value { get; init; }
+    public  Guid Value { get; init; }
 
-    [SetsRequiredMembers]
     private Identifier(Guid value) => Value = value;
 
-    internal static Identifier Construct() => new(Guid.CreateVersion7());
+    public static Identifier Construct() => new(Guid.CreateVersion7());
 }
