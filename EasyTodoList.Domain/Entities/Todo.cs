@@ -35,6 +35,16 @@ public class Todo : Entity
             ? new(dto.Description, dto.DueDate, dto.IsImportant, dto.IsComplete, DateTime.Now, null)
             : Todo.NotValid(); // TODO: Pass in the validation error
 
+    public static IEnumerable<Todo> ConstructEnumerable(IEnumerable<CreateTodo> dtos)
+    {
+        List<Todo> list = [];
+        foreach (CreateTodo dto in dtos)
+        {
+            list.Add(Todo.Construct(dto));
+        }
+        return list.AsEnumerable();
+    }
+
     private static (bool IsValid, string ErrorMessage) ValidateCreateTodo(CreateTodo dto)
     {
         bool isValid = true;
