@@ -33,7 +33,7 @@ internal class Todo : Entity
 
     public static Todo Construct(CreateTodo dto) => ValidateCreateTodo(dto).IsValid
             ? new(dto.Description, dto.DueDate, dto.IsImportant, dto.IsComplete, DateTime.Now, null)
-            : Todo.NotValid();
+            : Todo.NotValid(); // TODO: Pass in the validation error
 
     private static (bool IsValid, string ErrorMessage) ValidateCreateTodo(CreateTodo dto)
     {
