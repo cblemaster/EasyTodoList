@@ -1,6 +1,4 @@
 ﻿
-using EasyTodoList.Domain.Primitives;
-
 namespace EasyTodoList.Domain.DataTransfer;
 
 public class TodoDetail
