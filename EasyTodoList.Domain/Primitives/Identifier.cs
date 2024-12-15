@@ -1,11 +1,9 @@
 ﻿
-using System.Diagnostics.CodeAnalysis;
-
 namespace EasyTodoList.Domain.Primitives;
 
 public class Identifier
 {
-    public  Guid Value { get; init; }
+    public Guid Value { get; init; }
 
     private Identifier(Guid value) => Value = value;
 

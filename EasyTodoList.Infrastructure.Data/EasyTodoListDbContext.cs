@@ -16,7 +16,8 @@ public partial class EasyTodoListDbContext : DbContext
     public virtual DbSet<Todo> Todos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.UseSqlite("Data Source=easytodolist.dat")
+        optionsBuilder
+            .UseSqlite("Data Source=easytodolist.dat")
             .UseSeeding((context, _) =>
             {
                 context.Set<Todo>().AddRange(SeedExampleData.GenerateExampleTodoEnumerable());
@@ -27,7 +28,7 @@ public partial class EasyTodoListDbContext : DbContext
             {
                 context.Set<Todo>().AddRange(SeedExampleData.GenerateExampleTodoEnumerable());
                 await context.SaveChangesAsync(ct);
-            });
+            });     // TODO: Why doesn't the seeding work? Do I need to call .EnsureCreate() ?
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,6 +1,4 @@
 ﻿
-using System.Diagnostics.CodeAnalysis;
-
 namespace EasyTodoList.Domain.Primitives;
 
 public class Descriptor

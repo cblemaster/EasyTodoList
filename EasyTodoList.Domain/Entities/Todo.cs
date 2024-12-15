@@ -15,10 +15,10 @@ public class Todo : Entity
     public required override Identifier Id { get; init; }
 
     private Todo() { }
-    
+
     [SetsRequiredMembers]
     private Todo(string description, DateOnly? dueDate, bool isImportant, bool isComplete, DateTime createDate, DateTime? updateDate)
-    {   
+    {
         Description = Descriptor.Construct(description);
         DueDate = dueDate;
         IsImportant = isImportant;
@@ -35,6 +35,7 @@ public class Todo : Entity
             ? new(dto.Description, dto.DueDate, dto.IsImportant, dto.IsComplete, DateTime.Now, null)
             : Todo.NotValid(); // TODO: Pass in the validation error
 
+    // TODO: Pull these construct methods into a factory class
     public static IEnumerable<Todo> ConstructEnumerable(IEnumerable<CreateTodo> dtos)
     {
         List<Todo> list = [];
