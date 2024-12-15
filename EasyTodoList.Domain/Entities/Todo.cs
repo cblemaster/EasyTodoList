@@ -14,6 +14,8 @@ public class Todo : Entity
     public required DateTimeStamps Dates { get; init; }
     public required override Identifier Id { get; init; }
 
+    private Todo() { }
+    
     [SetsRequiredMembers]
     private Todo(string description, DateOnly? dueDate, bool isImportant, bool isComplete, DateTime createDate, DateTime? updateDate)
     {   

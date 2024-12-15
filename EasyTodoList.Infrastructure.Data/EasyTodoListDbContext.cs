@@ -25,14 +25,12 @@ public partial class EasyTodoListDbContext : DbContext
             entity.Property(e => e.Description)
                 .HasConversion(d => d.Value, d => Descriptor.Construct(d))
                 .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsRequired();
+                .IsUnicode(false);
             entity.Property(e => e.Id)
-                .HasConversion(d => d.Value, d => Identifier.Construct())
-                .IsRequired();
-            entity.Property(e => e.IsImportant).IsRequired();
-            entity.Property(e => e.IsComplete).IsRequired();
-            entity.ComplexProperty(e => e.Dates).PrimitiveCollection(p => p.CreateDate).IsRequired();
+                .HasConversion(d => d.Value, d => Identifier.Construct());
+            entity.Property(e => e.IsImportant);
+            entity.Property(e => e.IsComplete);
+            entity.ComplexProperty(e => e.Dates);
         });
 
         OnModelCreatingPartial(modelBuilder);
