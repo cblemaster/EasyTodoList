@@ -35,3 +35,6 @@
 ## Built with
 + .NET 9/ C# 13
 + Microsoft Visual Studio Community 2022
+## Improvement opportunities / new features
++ Use record classes and record structs for domain model
++ ...
