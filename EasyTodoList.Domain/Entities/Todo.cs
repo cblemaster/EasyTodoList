@@ -7,6 +7,7 @@ namespace EasyTodoList.Domain.Entities;
 
 public class Todo : Entity
 {
+    #region properties
     public required Descriptor Description { get; init; }
     public required DateOnly? DueDate { get; init; }
     public required bool IsImportant { get; init; }
@@ -14,6 +15,10 @@ public class Todo : Entity
     public required DateTimeStamps Dates { get; init; }
     public required override Identifier Id { get; init; }
 
+    public TodoDetail GetTodoDetail => new() { Description = Description.Value, DueDate = DueDate, IsImportant = IsImportant, IsComplete = IsComplete, CreateDate = Dates.CreateDate, UpdateDate = Dates.UpdateDate, Id = Id.Value };
+    #endregion properties
+
+    #region ctors
     private Todo() { }
 
     [SetsRequiredMembers]
@@ -26,16 +31,13 @@ public class Todo : Entity
         Dates = DateTimeStamps.Construct(createDate, updateDate);
         Id = Identifier.Construct();
     }
+    #endregion ctors
 
-    public TodoDetail GetTodoDetail => new() { Description = Description.Value, DueDate = DueDate, IsImportant = IsImportant, IsComplete = IsComplete, CreateDate = Dates.CreateDate, UpdateDate = Dates.UpdateDate, Id = Id.Value };
-
-    private static Todo NotValid() => new("Input provided for todo is not valid.", null, false, false, DateTime.Now, null);
-
+    #region factory methods
     public static Todo Construct(CreateTodo dto) => ValidateCreateTodo(dto).IsValid
             ? new(dto.Description, dto.DueDate, dto.IsImportant, dto.IsComplete, DateTime.Now, null)
             : Todo.NotValid(); // TODO: Pass in the validation error
 
-    // TODO: Pull these construct methods into a factory class
     public static IEnumerable<Todo> ConstructEnumerable(IEnumerable<CreateTodo> dtos)
     {
         List<Todo> list = [];
@@ -46,6 +48,10 @@ public class Todo : Entity
         return list.AsEnumerable();
     }
 
+    private static Todo NotValid() => new("Input provided for todo is not valid.", null, false, false, DateTime.Now, null);
+    #endregion factory methods
+
+    #region input validation
     private static (bool IsValid, string ErrorMessage) ValidateCreateTodo(CreateTodo dto)
     {
         bool isValid = true;
@@ -64,4 +70,5 @@ public class Todo : Entity
 
         return (isValid, error);
     }
+    #endregion input validation
 }
