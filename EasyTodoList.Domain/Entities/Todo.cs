@@ -34,9 +34,11 @@ public class Todo : Entity
     #endregion ctors
 
     #region factory methods
-    public static Todo Construct(CreateTodo dto) => ValidateCreateTodo(dto).IsValid
-            ? new(dto.Description, dto.DueDate, dto.IsImportant, dto.IsComplete, DateTime.Now, null)
-            : Todo.NotValid(); // TODO: Pass in the validation error
+    public static Todo Construct(CreateTodo dto)
+    {
+        (bool IsValid, string Error) = ValidateCreateTodo(dto);
+        return IsValid ? new(dto.Description, dto.DueDate, dto.IsImportant, dto.IsComplete, DateTime.Now, null) : Todo.NotValid(Error);
+    }
 
     public static IEnumerable<Todo> ConstructEnumerable(IEnumerable<CreateTodo> dtos)
     {
@@ -48,7 +50,7 @@ public class Todo : Entity
         return list.AsEnumerable();
     }
 
-    private static Todo NotValid() => new("Input provided for todo is not valid.", null, false, false, DateTime.Now, null);
+    private static Todo NotValid(string error) => new(error, null, false, false, DateTime.Now, null);
     #endregion factory methods
 
     #region input validation
