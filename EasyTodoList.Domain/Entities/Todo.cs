@@ -13,6 +13,8 @@ public class Todo : Entity
     public DateTimeStamps Dates { get; init; }
     public override Identifier Id { get; init; }
 
+    private Todo() { }
+
     [SetsRequiredMembers]
     private Todo(string description, DateOnly? dueDate, bool isImportant, bool isComplete)
     {

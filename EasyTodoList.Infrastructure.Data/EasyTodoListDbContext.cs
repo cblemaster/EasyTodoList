@@ -23,7 +23,7 @@ public partial class EasyTodoListDbContext : DbContext
         {
             entity.ToTable("Todo");
             entity.Property(e => e.Description)
-                .HasConversion(d => d.Value, d => Descriptor.ConstructOrThrowArgumentException(d.Value))
+                .HasConversion(d => d.Value.Value, d => Descriptor.ConstructOrThrowArgumentException(d))
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.ComplexProperty(e => e.Dates);
