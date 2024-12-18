@@ -3,8 +3,8 @@ namespace EasyTodoList.Domain.Primitives;
 
 public class DateTimeStamps
 {
-    public DateTime CreateDate { get; init; }
-    public DateTime? UpdateDate { get; init; }
+    internal DateTime CreateDate { get; init; }
+    internal DateTime? UpdateDate { get; init; }
 
     private DateTimeStamps(DateTime createDate, DateTime? updateDate)
     {
