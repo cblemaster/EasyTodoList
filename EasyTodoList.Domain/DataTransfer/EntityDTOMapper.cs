@@ -3,9 +3,9 @@ using EasyTodoList.Domain.Entities;
 
 namespace EasyTodoList.Domain.DataTransfer;
 
-internal static class EntityDTOMapper
+public static class EntityDTOMapper
 {
-    internal static TodoDTO MapTodoEntityToDTO(Todo todo) =>
+    public static TodoDTO MapTodoEntityToDTO(Todo todo) =>
         new()
         {
             Description = todo.Description.Value.Value,
@@ -17,7 +17,7 @@ internal static class EntityDTOMapper
             Id = todo.Id.Value
         };
 
-    internal static IEnumerable<TodoDTO> MapTodoEntitySequenceToTodoDTOSequence(IEnumerable<Todo> todos)
+    public static IEnumerable<TodoDTO> MapTodoEntitySequenceToTodoDTOSequence(IEnumerable<Todo> todos)
     {
         List<TodoDTO> dtos = [];
         foreach (Todo todo in todos)

@@ -1,13 +1,13 @@
 ﻿
 namespace EasyTodoList.Domain.DataTransfer;
 
-internal class TodoDTO
+public class TodoDTO
 {
-    internal string Description { get; set; } = string.Empty;
-    internal DateOnly? DueDate { get; set; }
-    internal bool IsImportant { get; set; }
-    internal bool IsComplete { get; set; }
-    internal DateTime CreateDate { get; set; }
-    internal DateTime? UpdateDate { get; set; }
-    internal Guid Id { get; set; }
+    public string Description { get; set; } = string.Empty;
+    public DateOnly? DueDate { get; set; }
+    public bool IsImportant { get; set; }
+    public bool IsComplete { get; set; }
+    public DateTime CreateDate { get; set; }
+    public DateTime? UpdateDate { get; set; }
+    public Guid Id { get; set; }
 }
