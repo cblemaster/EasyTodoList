@@ -27,7 +27,7 @@ public partial class EasyTodoListDbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.Id)
-                .HasConversion(d => d.Value, d => Identifier.Construct());
+                .HasConversion(d => d.Value, d => new Identifier(d));
             entity.ComplexProperty(e => e.Dates);
         });
 
