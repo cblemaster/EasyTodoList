@@ -1,6 +1,6 @@
 ﻿
 using EasyTodoList.Domain.Entities;
-using EasyTodoList.Domain.Primitives;
+using EasyTodoList.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyTodoList.Infrastructure.Data;
@@ -26,9 +26,9 @@ public partial class EasyTodoListDbContext : DbContext
                 .HasConversion(d => d.Value, d => Descriptor.ConstructOrThrowArgumentException(d.Value))
                 .HasMaxLength(100)
                 .IsUnicode(false);
+            entity.ComplexProperty(e => e.Dates);
             entity.Property(e => e.Id)
                 .HasConversion(d => d.Value, d => new Identifier(d));
-            entity.ComplexProperty(e => e.Dates);
         });
 
         OnModelCreatingPartial(modelBuilder);

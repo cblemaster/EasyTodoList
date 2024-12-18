@@ -1,5 +1,5 @@
 ﻿
-using EasyTodoList.Domain.Primitives;
+using EasyTodoList.Domain.ValueObjects;
 using System.Diagnostics.CodeAnalysis;
 
 namespace EasyTodoList.Domain.Entities;

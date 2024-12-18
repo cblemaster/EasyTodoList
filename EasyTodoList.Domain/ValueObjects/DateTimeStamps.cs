@@ -1,4 +1,4 @@
 ﻿
-namespace EasyTodoList.Domain.Primitives;
+namespace EasyTodoList.Domain.ValueObjects;
 
 public record DateTimeStamps(DateTime CreateDate, DateTime? UpdateDate);

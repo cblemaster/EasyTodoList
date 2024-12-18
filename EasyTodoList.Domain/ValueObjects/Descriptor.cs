@@ -1,5 +1,6 @@
 ﻿
-namespace EasyTodoList.Domain.Primitives;
+
+namespace EasyTodoList.Domain.ValueObjects;
 
 public record Descriptor(ValidString Value)
 {
